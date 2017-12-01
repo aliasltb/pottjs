@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div id="stage">
+            <header></header>
+            <form id="form">
+                <fieldset>
+                    <div>
+                        <label>Subreddit</label>
+                        <input type="text" name="subreddit" value="aww" />
+                    </div>
+                    <div>
+                        <label>Limit</label>
+                        <select name="limit">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Subreddit</label>
+                        <select name="endpoint">
+                            <option value="hot">Beliebt</option>
+                            <option value="new">Neu</option>
+                            <option value="top">Top</option>
+                            <option value="controversial">Kontrovers</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Laden">
+                </fieldset>
+                <fieldset>
+
+                </fieldset>
+            </form>
+
+            <div id="medium"></div>
+
+            <div id="container">
+
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="js/vendor/jquery-3.2.1.min.js"></script>
+        <script src="js/main.js"></script>
+
+        <!--<script src="https://cdn.jsdelivr.net/npm/reddit.js@0.1.4/reddit.min.js"></script>-->
+        <!--<script>-->
+            <!--// Fetch the 5 hottest posts on /r/awww-->
+            <!--reddit.hot('aww').limit(5).fetch(function(res) {-->
+                <!--// res contains JSON parsed response from Reddit-->
+                <!--console.log(res);-->
+            <!--});-->
+        <!--</script>-->
+
+        <!--<script>-->
+            <!--(function () {-->
+                <!--var container = document.querySelector(".container");-->
+                <!--reddit.hot("aww").limit(5).fetch(function (res) {-->
+                    <!--for (var i = 0; i < res.data.children.length; i++) {-->
+                        <!--var awwData = res.data.children[i].data;-->
+                        <!--var thumbnail = document.createElement("img");-->
+                        <!--var aww = document.createElement("img");-->
+                        <!--var row = document.createElement("div");-->
+                        <!--var left = document.createElement("div");-->
+                        <!--var right = document.createElement("div");-->
+                        <!--var link = document.createElement("a");-->
+                        <!--row.className = "row";-->
+                        <!--left.className = "col-xs-4";-->
+                        <!--thumbnail.setAttribute("src", awwData.thumbnail);-->
+                        <!--link.setAttribute("href", "https://www.reddit.com" + awwData.permalink);-->
+                        <!--link.innerText = awwData.title;-->
+                        <!--left.appendChild(thumbnail);-->
+                        <!--left.appendChild(link);-->
+                        <!--row.appendChild(left);-->
+                        <!--right.className = "col-xs-8";-->
+                        <!--aww.className = "img-responsive";-->
+                        <!--aww.setAttribute("src", awwData.url);-->
+                        <!--right.appendChild(aww);-->
+                        <!--row.appendChild(right);-->
+                        <!--container.appendChild(row);-->
+                    <!--}-->
+                <!--});-->
+            <!--})();-->
+        <!-- /script -->
+    </body>
+</html>

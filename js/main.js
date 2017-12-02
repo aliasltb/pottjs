@@ -106,10 +106,8 @@
             e.preventDefault();
         });
 
-        getJSON('aww', 'hot', '5');
+        getJSON('aww', 'hot', '15');
     };
-
-
 
 
     $(document).ready(function() {

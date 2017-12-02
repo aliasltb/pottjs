@@ -1,39 +1,6 @@
 (function (window, $) {
-
-    var data = {};
-    var form;
-
-
-
-    function foo2()
-    {
-        return
-        {
-            bar: "hello"
-        };
-    }
-
-    var over18 = function(element) {
-       // return !element.data.over_18;
-        return true;
-    };
-
-    var nosticky = function(element) {
-        return !element.data.stickied;
-    };
-
-    // function success(data) {
-    //     console.table(data.data.children);
-    // }
-    //
-    // // "sticky" entfernen
-    //
-    // $.ajax({
-    //     url: 'https://www.reddit.com/r/javascript/hot.json',
-    //     data: { 'limit': 5 },
-    //     success: success,
-    //     dataType: 'json'
-    // });
+    var data,
+        form;
 
     var buildList = function (entries) {
         var container = document.querySelector('#container');
@@ -70,14 +37,13 @@
     };
 
     var handleOnLoad = function (res) {
-        var entries = res.data.children.filter(nosticky).filter(over18);
+        var entries = res.data.children;
 
         buildList(entries);
     };
 
     var getJSON = function(sub, end, limit) {
         var url = 'https://www.reddit.com/r/'+sub+'/'+end+'.json';
-        var httpRequest = new XMLHttpRequest();
 
         $.ajax({
             url: url,
@@ -88,10 +54,6 @@
             success: handleOnLoad,
             dataType: 'json'
         });
-        // httpRequest.onload = handleOnLoad;
-        // httpRequest.responseType = 'json';
-        // httpRequest.open('GET', url, true);
-        // httpRequest.send({ limit: limit });
     };
 
     var init = function() {
@@ -114,20 +76,4 @@
         init();
     });
 
-
 })(window, jQuery);
-
-
-/**
- /r/javascript
- /r/node/
- /r/aww/
-
-
-
- Erweiterung: NSFW ausschließen
- Nach Score sortieren
-
-
- Im Firefox wird die Liste nicht gelöscht, wenn man NSFW-Subreddits aufruft, im Chrome schon
-*/

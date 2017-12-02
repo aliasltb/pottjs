@@ -12,9 +12,12 @@
 
 html {
     color: #222;
-    font-size: 1em;
-    line-height: 1.4;
+    font-size: .875em;
+    line-height: 1.5;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    overflow-y: scroll;
 }
+
 
 
 
@@ -49,21 +52,6 @@ hr {
     border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
 }
 
 /*
@@ -103,20 +91,76 @@ textarea {
     min-height: 100vh;
 }
 
+h1 {
+    font-weight: 700;
+    margin: .75em 0 .5em;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: .25em 0 .5em;
+}
+
+
+
+form#filter {
+    margin: 0 0 1rem;
+
+}
+
 fieldset {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: end;
 }
 
-fieldset div {
-    flex: 0 1 auto;
+.filter-fieldset {
+    margin: 0 -1rem;
+}
+
+.filter {
+    flex: 1 1 auto;
+    margin: 0 1rem;
+}
+
+.filter__subreddit {
+    flex-grow: 4;
+}
+
+.filter__limit,
+.filter__endpoint {
+    flex-grow: 1;
+    width: 10%;
+}
+
+.filter__submit {
+    width: 5%;
+}
+
+input, select {
+    width: 100%;
 }
 
 input, label {
     display:block;
 }
 
+
+.entry {
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+}
+.entry:nth-child(odd) {
+    background: #ebebeb;
+}
+.entry h2 {
+    flex-grow: 1;
+    padding-right: 1rem;
+}
 
 
 
@@ -228,80 +272,4 @@ input, label {
        (min-resolution: 1.25dppx),
        (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-    *,
-    *:before,
-    *:after {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre {
-        white-space: pre-wrap !important;
-    }
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
 }

@@ -40,14 +40,23 @@
         });
 
         entries.forEach(function (t) {
-            var eintrag = document.createElement('div');
-            eintrag.classList.add('entry');
+            var entry = document.createElement('a');
+            entry.classList.add('entry');
+            entry.href = t.data.url;
+            entry.target = "_blank";
+
             var title = document.createElement('h2');
             title.innerHTML = t.data.title;
+            entry.appendChild(title);
 
-            eintrag.appendChild(title);
-            container.appendChild(eintrag);
-        })
+            if(t.data.thumbnail != '') {
+                var thumbnail = document.createElement('img');
+                thumbnail.src = t.data.thumbnail;
+                entry.appendChild(thumbnail);
+            }
+
+            container.appendChild(entry);
+        });
 
     };
 
@@ -63,7 +72,10 @@
 
         $.ajax({
             url: url,
-            data: { 'limit': limit },
+            data: {
+                'g': 'GLOBAL',
+                'limit': limit
+            },
             success: handleOnLoad,
             dataType: 'json'
         });
@@ -74,7 +86,7 @@
     };
 
     var init = function() {
-        form = document.querySelector('#form');
+        form = document.querySelector('#filter');
         form.addEventListener('submit', function(e)  {
             var formData = new FormData(form);
             var sub = formData.get('subreddit');

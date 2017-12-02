@@ -20,32 +20,35 @@
     <body>
         <div id="stage">
             <header>
-                <h1>habsgelesen</h1>
+                <h1>reddit reader</h1>
             </header>
-            <form id="form">
-                <fieldset>
-                    <div>
-                        <label>Subreddit</label>
-                        <input type="text" name="subreddit" value="aww" />
+            <form id="filter">
+                <fieldset class="filter-fieldset">
+                    <div class="filter filter__subreddit">
+                        <label for="subreddit">Subreddit</label>
+                        <input type="text" id="subreddit" name="subreddit" value="aww" />
                     </div>
-                    <div>
-                        <label>Limit</label>
-                        <select name="limit">
+                    <div class="filter filter__limit">
+                        <label for="limit">Limit</label>
+                        <select id="limit" name="limit">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="25">25</option>
                         </select>
                     </div>
-                    <div>
-                        <label>Subreddit</label>
-                        <select name="endpoint">
+                    <div class="filter filter__endpoint">
+                        <label for="endpoint">Subreddit</label>
+                        <select id="endpoint" name="endpoint">
                             <option value="hot">Beliebt</option>
                             <option value="new">Neu</option>
                             <option value="top">Top</option>
                             <option value="controversial">Kontrovers</option>
                         </select>
                     </div>
-                    <input type="submit" value="Laden">
+                    <div class="filter filter__submit">
+                        <input type="submit" value="Laden">
+                    </div>
+
                 </fieldset>
                 <fieldset>
 

@@ -42,8 +42,8 @@
         buildList(entries);
     };
 
-    var getJSON = function(sub, end, limit) {
-        var url = 'https://www.reddit.com/r/'+sub+'/'+end+'.json';
+    var getJSON = function(sub, cat, limit) {
+        var url = 'https://www.reddit.com/r/'+sub+'/'+cat+'.json';
 
         $.ajax({
             url: url,
@@ -60,15 +60,15 @@
         form = document.querySelector('#filter');
         form.addEventListener('submit', function(e)  {
             var formData = new FormData(form);
-            var sub = formData.get('subreddit');
-            var endpoint = formData.get('endpoint');
+            var subreddit = formData.get('subreddit');
+            var category = formData.get('category');
             var limit = formData.get('limit');
 
-            getJSON(sub, endpoint, limit);
+            getJSON(subreddit, category, limit);
             e.preventDefault();
         });
 
-        getJSON('aww', 'hot', '15');
+        getJSON('memes', 'hot', '15');
     };
 
 

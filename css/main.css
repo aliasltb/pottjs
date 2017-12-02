@@ -11,7 +11,7 @@
    ========================================================================== */
 
 html {
-    color: #222;
+    color: #444;
     font-size: .875em;
     line-height: 1.5;
     font-family: 'Encode Sans Condensed', sans-serif;
@@ -102,6 +102,10 @@ h2 {
     margin: .25em 0 .5em;
 }
 
+a {
+    text-decoration: none;
+    color: #8ebd2e;
+}
 
 
 form#filter {
@@ -148,18 +152,30 @@ input, label {
 }
 
 
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .entry {
     padding: .5rem;
     display: flex;
     flex-direction: row;
-    flex: 1 1 auto;
+    flex: 0 1 20%;
+    align-items: normal;
 }
 .entry:nth-child(odd) {
     background: #ebebeb;
 }
-.entry h2 {
-    flex-grow: 1;
-    padding-right: 1rem;
+.entry figure {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.entry a:visited {
+
 }
 
 

@@ -14,9 +14,13 @@
     }
 
     var over18 = function(element) {
-        return !element.data.over_18;
+       // return !element.data.over_18;
+        return true;
     };
 
+    var nosticky = function(element) {
+        return !element.data.stickied;
+    };
 
     // function success(data) {
     //     console.table(data.data.children);
@@ -40,28 +44,33 @@
         });
 
         entries.forEach(function (t) {
+            if(t.data.thumbnail == '' || t.data.thumbnail == 'self' ) return;
+
             var entry = document.createElement('a');
             entry.classList.add('entry');
             entry.href = t.data.url;
             entry.target = "_blank";
 
-            var title = document.createElement('h2');
+            var figure = document.createElement('figure');
+            figure.href = t.data.url;
+            figure.target = "_blank";
+
+            var thumbnail = document.createElement('img');
+            thumbnail.src = t.data.thumbnail;
+            figure.appendChild(thumbnail);
+
+            var title = document.createElement('figcaption');
             title.innerHTML = t.data.title;
-            entry.appendChild(title);
+            figure.appendChild(title);
 
-            if(t.data.thumbnail != '') {
-                var thumbnail = document.createElement('img');
-                thumbnail.src = t.data.thumbnail;
-                entry.appendChild(thumbnail);
-            }
-
+            entry.appendChild(figure);
             container.appendChild(entry);
         });
 
     };
 
     var handleOnLoad = function (res) {
-        var entries = res.data.children.filter(over18);
+        var entries = res.data.children.filter(nosticky).filter(over18);
 
         buildList(entries);
     };

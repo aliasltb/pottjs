@@ -1,32 +1,41 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="de">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>reddit images</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="apple-touch-icon" href="icon.png">
+        <link rel="icon" href="//add2.de/files/add2/icons/favicons/add2_favicon.ico" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>
         <div id="stage">
             <header>
-                <h1>reddit reader</h1>
+                <h1>reddit images</h1>
             </header>
             <form id="filter">
                 <fieldset class="filter-fieldset">
                     <div class="filter filter__subreddit">
                         <label for="subreddit">Subreddit</label>
-                        <input type="text" id="subreddit" name="subreddit" value="aww" />
+                        <input type="text" id="subreddit" name="subreddit" value="aww" list="cuteness" />
+
+                        <datalist id="cuteness">
+                            <option value="aww">
+                            <option value="cute">
+                            <option value="aww_gifs">
+                            <option value="cats">
+                            <option value="babyanimals">
+                            <option value="foxes">
+                            <option value="batty">
+                        </datalist>
                     </div>
                     <div class="filter filter__limit">
                         <label for="limit">Limit</label>
@@ -48,59 +57,10 @@
                     <div class="filter filter__submit">
                         <input type="submit" value="Laden">
                     </div>
-
-                </fieldset>
-                <fieldset>
-
                 </fieldset>
             </form>
 
-            <div id="medium"></div>
-
-            <div id="container">
-
-            </div>
+            <div id="container"></div>
         </div>
-
-
-        <!--<script src="https://cdn.jsdelivr.net/npm/reddit.js@0.1.4/reddit.min.js"></script>-->
-        <!--<script>-->
-            <!--// Fetch the 5 hottest posts on /r/awww-->
-            <!--reddit.hot('aww').limit(5).fetch(function(res) {-->
-                <!--// res contains JSON parsed response from Reddit-->
-                <!--console.log(res);-->
-            <!--});-->
-        <!--</script>-->
-
-        <!--<script>-->
-            <!--(function () {-->
-                <!--var container = document.querySelector(".container");-->
-                <!--reddit.hot("aww").limit(5).fetch(function (res) {-->
-                    <!--for (var i = 0; i < res.data.children.length; i++) {-->
-                        <!--var awwData = res.data.children[i].data;-->
-                        <!--var thumbnail = document.createElement("img");-->
-                        <!--var aww = document.createElement("img");-->
-                        <!--var row = document.createElement("div");-->
-                        <!--var left = document.createElement("div");-->
-                        <!--var right = document.createElement("div");-->
-                        <!--var link = document.createElement("a");-->
-                        <!--row.className = "row";-->
-                        <!--left.className = "col-xs-4";-->
-                        <!--thumbnail.setAttribute("src", awwData.thumbnail);-->
-                        <!--link.setAttribute("href", "https://www.reddit.com" + awwData.permalink);-->
-                        <!--link.innerText = awwData.title;-->
-                        <!--left.appendChild(thumbnail);-->
-                        <!--left.appendChild(link);-->
-                        <!--row.appendChild(left);-->
-                        <!--right.className = "col-xs-8";-->
-                        <!--aww.className = "img-responsive";-->
-                        <!--aww.setAttribute("src", awwData.url);-->
-                        <!--right.appendChild(aww);-->
-                        <!--row.appendChild(right);-->
-                        <!--container.appendChild(row);-->
-                    <!--}-->
-                <!--});-->
-            <!--})();-->
-        <!-- /script -->
     </body>
 </html>

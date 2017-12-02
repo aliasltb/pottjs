@@ -1,7 +1,7 @@
-(function (window) {
+(function (window, $) {
 
     var data = {};
-    var form = document.querySelector('#form');
+    var form;
 
 
 
@@ -52,7 +52,7 @@
     };
 
     var handleOnLoad = function (res) {
-        var entries = res.target.response.data.children.filter(over18);
+        var entries = res.data.children.filter(over18);
 
         buildList(entries);
     };
@@ -61,31 +61,42 @@
         var url = 'https://www.reddit.com/r/'+sub+'/'+end+'.json';
         var httpRequest = new XMLHttpRequest();
 
-        // $.ajax({
-        //     url: url,
-        //     data: { 'limit': limit },
-        //     success: handleOnLoad,
-        //     dataType: 'json'
-        // });
-        httpRequest.onload = handleOnLoad;
-        httpRequest.responseType = 'json';
-        httpRequest.open('GET', url, true);
-        httpRequest.send({ limit: limit });
+        $.ajax({
+            url: url,
+            data: { 'limit': limit },
+            success: handleOnLoad,
+            dataType: 'json'
+        });
+        // httpRequest.onload = handleOnLoad;
+        // httpRequest.responseType = 'json';
+        // httpRequest.open('GET', url, true);
+        // httpRequest.send({ limit: limit });
     };
 
-    form.addEventListener('submit', function(e)  {
-        var formData = new FormData(form);
-        var sub = formData.get('subreddit');
-        var endpoint = formData.get('endpoint');
-        var limit = formData.get('limit');
+    var init = function() {
+        form = document.querySelector('#form');
+        form.addEventListener('submit', function(e)  {
+            var formData = new FormData(form);
+            var sub = formData.get('subreddit');
+            var endpoint = formData.get('endpoint');
+            var limit = formData.get('limit');
 
-        getJSON(sub, endpoint, limit);
-        e.preventDefault();
+            getJSON(sub, endpoint, limit);
+            e.preventDefault();
+        });
+
+        getJSON('aww', 'hot', '5');
+    };
+
+
+
+
+    $(document).ready(function() {
+        init();
     });
 
-    getJSON('aww', 'hot', '5');
 
-})(window);
+})(window, jQuery);
 
 
 /**

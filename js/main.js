@@ -29,6 +29,8 @@
 
         entries.forEach(function (t) {
             if(t.data.thumbnail == '' || t.data.thumbnail == 'self' ) return;
+            if(t.data.over_18) return;
+            if(t.data.stickied) return;
 
             var entry = document.createElement('a');
             entry.classList.add('entry');

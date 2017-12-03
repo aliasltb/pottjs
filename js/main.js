@@ -1,9 +1,15 @@
 (function (window, $) {
 
     var data = {};
-    var form;
+    var filter;
+
+    var sort = function (sortBy) {
+
+    };
 
     var buildList = function (entries) {
+        $('#container').empty();
+
         $.each(entries, function (k,t) {
             if(t.data.thumbnail == '' || t.data.thumbnail == 'self' ) return;
 
@@ -46,15 +52,18 @@
     };
 
     var init = function() {
-        form = document.querySelector('#filter');
-        form.addEventListener('submit', function(e)  {
-            var formData = new FormData(form);
-            var subreddit = formData.get('subreddit');
-            var category = formData.get('category');
-            var limit = formData.get('limit');
+        $('#filter').submit(function(e) {
+            subreddit = $("#subreddit").val();
+            category = $("#category").val();
+            limit = $("#limit").val();
 
             getJSON(subreddit, category, limit);
             e.preventDefault();
+        });
+
+        sort = document.querySelector('#sort');
+        sort.addEventListener('click', function(e)  {
+            console.log(this.value);
         });
 
         getJSON('memes', 'hot', '15');

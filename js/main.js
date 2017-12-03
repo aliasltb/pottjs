@@ -1,10 +1,22 @@
 (function (window, $) {
 
-    var data = {};
-    var filter;
+    var data = {},
+        filter;
 
     var sort = function (sortBy) {
+        container = $('#container');
+        entries = container.find(".entry");
+        vorher = entries;
 
+        entries.sort(function(a,b){
+            var contentA = parseInt( $(a).data(sortBy));
+            var contentB = parseInt( $(b).data(sortBy));
+            return (contentA < contentB) ? -1 : 1;
+        });
+
+        entries.each(function () {
+            container.append(this);
+        });
     };
 
     var buildList = function (entries) {
@@ -17,7 +29,7 @@
                 class: 'entry',
                 href: t.data.url,
                 target: '_blank'
-            }).data('score', t.data.score).data('score', t.data.score).data('ups', t.data.ups).data('created', t.data.created);
+            }).data('score', t.data.score).data('downs', t.data.downs).data('ups', t.data.ups).data('age', t.data.created);
 
             var figure = $("<figure />");
             $("<img />", {
@@ -35,6 +47,7 @@
         var entries = res.data.children;
 
         buildList(entries);
+        sort('ups');
     };
 
     var getJSON = function(sub, cat, limit) {
@@ -61,9 +74,9 @@
             e.preventDefault();
         });
 
-        sort = document.querySelector('#sort');
-        sort.addEventListener('click', function(e)  {
-            console.log(this.value);
+        $('#sort').click(function(e)  {
+            var sortBy = $('input[name=sort]:checked').val();
+            sort(sortBy);
         });
 
         getJSON('memes', 'hot', '15');

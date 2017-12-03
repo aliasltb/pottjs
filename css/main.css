@@ -143,6 +143,38 @@ fieldset {
     width: 5%;
 }
 
+#sort {
+
+}
+
+#sort ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: .5em 0 1em;
+    padding: 0;
+}
+
+#sort ul li {
+    margin: 0;
+    padding: 0 .25em;
+}
+#sort ul li:first-child {
+    padding-left: 0;
+}
+
+#sort input[type="radio"] {
+    display:none;
+}
+#sort input[type="radio"] + label {
+    padding: .025em .5em;
+}
+#sort input[type="radio"]:checked + label {
+    color: #fff;
+    background: #8ebd2e;
+}
+
+
 input, select {
     width: 100%;
 }

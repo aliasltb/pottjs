@@ -25,9 +25,9 @@
                 <fieldset class="filter-fieldset">
                     <div class="filter filter__subreddit">
                         <label for="subreddit">Subreddit</label>
-                        <input type="text" id="subreddit" name="subreddit" value="aww" list="cuteness" />
+                        <input type="text" id="subreddit" name="subreddit" value="meme" list="subreddits" />
 
-                        <datalist id="cuteness">
+                        <datalist id="subreddits">
                             <option value="funny">
                             <option value="memes">
                             <option value="AdviceAnimals">
@@ -58,6 +58,14 @@
                     <div class="filter filter__submit">
                         <input type="submit" value="Laden">
                     </div>
+                </fieldset>
+                <fieldset id="sort">
+                    <ul class="sort sort__elements">
+                        <li>Sortieren nach: </li>
+                        <li><input type="radio" id="sortByUps" name="sort" value="ups" ><label for="sortByUps">Upvotes</label></li>
+                        <li><input type="radio" id="sortByDowns" name="sort" value="downs" ><label for="sortByDowns">Downvotes</label></li>
+                        <li><input type="radio" id="sortByTime" name="sort" value="age" ><label for="sortByTime">Age</label></li>
+                    </ul>
                 </fieldset>
             </form>
 

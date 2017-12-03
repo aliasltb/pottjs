@@ -94,4 +94,4 @@
 
     document.addEventListener('DOMContentLoaded', init());
 
-})(window, jQuery);
+})(window);

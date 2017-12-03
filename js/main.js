@@ -1,12 +1,12 @@
 (function (window, $) {
 
     var data = {},
-        filter;
+        filter,
+        entries = {};
 
     var sort = function (sortBy) {
-        container = $('#container');
-        entries = container.find(".entry");
-        vorher = entries;
+        container = document.querySelector('#container');
+        entries = container.querySelectorAll(".entry");
 
         entries.sort(function(a,b){
             var contentA = parseInt( $(a).data(sortBy));
@@ -14,7 +14,7 @@
             return (contentA < contentB) ? -1 : 1;
         });
 
-        entries.each(function () {
+        entries.forEach(function () {
             container.append(this);
         });
     };
@@ -56,10 +56,10 @@
     };
 
     var handleOnLoad = function (res) {
-        var entries = res.target.response.data.children;
+        entries = res.target.response.data.children;
 
         buildList(entries);
-        sort('ups');
+        //sort('ups'); // Funktioniert irgendwie nicht
     };
 
     var getJSON = function(sub, cat, limit) {

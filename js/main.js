@@ -92,8 +92,6 @@
         getJSON('memes', 'hot', '15');
     };
 
-    $(document).ready(function() {
-        init();
-    });
+    document.addEventListener('DOMContentLoaded', init());
 
 })(window, jQuery);

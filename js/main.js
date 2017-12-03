@@ -73,18 +73,20 @@
     };
 
     var init = function() {
-        $('#filter').submit(function(e) {
-            subreddit = $("#subreddit").val();
-            category = $("#category").val();
-            limit = $("#limit").val();
+        var filter = document.querySelector('#filter');
+        filter.addEventListener('submit', function(e)  {
+            var formData = new FormData(filter),
+                subreddit = formData.get('subreddit'),
+                category = formData.get('category');
+                limit = formData.get('limit');
 
             getJSON(subreddit, category, limit);
             e.preventDefault();
         });
 
-        $('#sort').click(function(e)  {
-            var sortBy = $('input[name=sort]:checked').val();
-            sort(sortBy);
+        var sort = document.querySelector('#sort');
+        sort.addEventListener('click', function(e)  {
+            sort(this.querySelector('input[name="sort"]:checked').value);
         });
 
         getJSON('memes', 'hot', '15');

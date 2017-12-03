@@ -118,10 +118,6 @@ fieldset {
     width: 5%;
 }
 
-#sort {
-
-}
-
 #sort ul {
     display: flex;
     flex-direction: row;

@@ -50,31 +50,24 @@
             title.innerHTML = t.data.title;
             figure.appendChild(title);
 
-            entry.appendChild(figure);
-            container.appendChild(entry);
+            container.appendChild(entry).appendChild(figure);
         });
 
     };
 
     var handleOnLoad = function (res) {
-        var entries = res.data.children;
+        var entries = res.target.response.data.children;
 
         buildList(entries);
         sort('ups');
     };
 
     var getJSON = function(sub, cat, limit) {
-        var url = 'https://www.reddit.com/r/'+sub+'/'+cat+'.json';
-
-        $.ajax({
-            url: url,
-            data: {
-                'g': 'GLOBAL',
-                'limit': limit
-            },
-            success: handleOnLoad,
-            dataType: 'json'
-        });
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.onload = handleOnLoad;
+        httpRequest.responseType = 'json';
+        httpRequest.open('GET', 'https://www.reddit.com/r/'+sub+'/'+cat+'.json', true);
+        httpRequest.send({ 'g': 'GLOBAL', limit: limit });
     };
 
     var init = function() {

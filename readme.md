@@ -9,6 +9,17 @@ Dummerweise ist aber einer von Euch dabei erwischt worden, wie er ein NSFW-Subre
 
 Nun ist das ganze Projekt leider mit fiesen jQuery-Metastasen durchzogen. Im Rahmen der Arbeiten an dem neuen Filter wird das Ganze also von Bernd zunächst auf vernünftiges Vanille-JS umgesetzt. Denk dran, lieber Bernd: dies ist keine Strafaufgabe … dies ist die Chance, etwas zu lernen.
 
+Oh ... und wo du schon dabei bist, Bernd:
+manche Subreddits haben auch "Stickys" - die haben mich schon die ganze Zeit gestört. Kannst du die bitte auch entfernen?
+
+Also:
+* jQuery entfernen
+* Sicherstellen, dass keine NSFW-Inhalte dargestellt werden
+* Stickys ebenfalls nicht darstellen
+
+Das bekommst du schon hin.
+
+
 Chip-chip-cheerio,
 
 Peter

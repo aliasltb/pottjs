@@ -20,25 +20,38 @@
     };
 
     var buildList = function (entries) {
-        $('#container').empty();
+        var container = document.querySelector('#container');
+        var oldEntries = container.querySelectorAll('.entry');
 
-        $.each(entries, function (k,t) {
+        oldEntries.forEach(function(entry) {
+            container.removeChild(entry);
+        });
+
+        entries.forEach(function (t) {
             if(t.data.thumbnail == '' || t.data.thumbnail == 'self' ) return;
 
-            var entry = $("<a />", {
-                class: 'entry',
-                href: t.data.url,
-                target: '_blank'
-            }).data('score', t.data.score).data('downs', t.data.downs).data('ups', t.data.ups).data('age', t.data.created);
+            var entry = document.createElement('a');
+            entry.classList.add('entry');
+            entry.href = t.data.url;
+            entry.target = "_blank";
+            entry.setAttribute('data-score', t.data.score);
+            entry.setAttribute('data-ups', t.data.ups);
+            entry.setAttribute('data-created', t.data.created);
 
-            var figure = $("<figure />");
-            $("<img />", {
-                    src: t.data.thumbnail
-            }).appendTo(figure);
-            $("<figcaption />").html(t.data.title).appendTo(figure);
+            var figure = document.createElement('figure');
+            figure.href = t.data.url;
+            figure.target = "_blank";
 
-            entry.append(figure);
-            $('#container').append(entry);
+            var thumbnail = document.createElement('img');
+            thumbnail.src = t.data.thumbnail;
+            figure.appendChild(thumbnail);
+
+            var title = document.createElement('figcaption');
+            title.innerHTML = t.data.title;
+            figure.appendChild(title);
+
+            entry.appendChild(figure);
+            container.appendChild(entry);
         });
 
     };
@@ -82,10 +95,8 @@
         getJSON('memes', 'hot', '15');
     };
 
-
     $(document).ready(function() {
         init();
     });
-
 
 })(window, jQuery);
